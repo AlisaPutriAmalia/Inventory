@@ -1,15 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
 
-Route::get('test', function () {
-    return response()->json(['message' => 'OK']);
-});
-
-Route::get('biodata', function () {
-    return response()->json([
-        'nama' => 'Alisa_Putri_Amalia_',
-        'nim' => '60200124063',
-        'kelas' => 'B'
-    ]);
-});
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('items', ItemController::class);
