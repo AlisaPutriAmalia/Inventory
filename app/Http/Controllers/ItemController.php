@@ -13,10 +13,13 @@ class ItemController extends BaseController {
     public function __construct(ItemService $svc) {
         $this->svc = $svc;
     }
+    /**
+     * Menampilkan daftar item, dengan opsi filter berdasarkan category_id.
+     */
     public function index(Request $request) {
         $categoryId = $request->query('category_id');
         return $this->success($this->svc->all($categoryId), 'Berhasil menarik semua data Item');
-        }
+    }
     public function store(StoreItemRequest $req) {
         $item = $this->svc->create($req->validated());
         return $this->success($item, 'Item berhasil dibuat', 201);
