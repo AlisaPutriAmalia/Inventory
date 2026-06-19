@@ -18,6 +18,7 @@ Base URL: `http://localhost:8000/api/v1`
 ## Item Barang
 
 - **GET /items** — Mengambil semua daftar item.
+- **GET /items?category_id={id}** — Mengambil daftar item, difilter berdasarkan kategori tertentu. Jika kategori tidak memiliki item, mengembalikan array kosong.
 - **POST /items** — Menambahkan item baru. Body: `{ name, quantity, price, category_id }`
 - **GET /items/{id}** — Melihat detail satu item.
 - **PUT /items/{id}** — Memperbarui data item.
