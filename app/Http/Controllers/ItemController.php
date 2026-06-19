@@ -6,15 +6,17 @@ use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Services\ItemService;
 use App\Http\Controllers\Api\BaseController;
+use Illuminate\Http\Request;
 
 class ItemController extends BaseController {
     protected ItemService $svc;
     public function __construct(ItemService $svc) {
         $this->svc = $svc;
     }
-    public function index() {
-        return $this->success($this->svc->all(), 'Berhasil menarik semua data Item');
-    }
+    public function index(Request $request) {
+        $categoryId = $request->query('category_id');
+        return $this->success($this->svc->all($categoryId), 'Berhasil menarik semua data Item');
+        }
     public function store(StoreItemRequest $req) {
         $item = $this->svc->create($req->validated());
         return $this->success($item, 'Item berhasil dibuat', 201);
