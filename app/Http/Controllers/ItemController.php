@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ItemController extends BaseController {
     protected ItemService $svc;
-    public function __construct(ItemService $svc): void {
+    public function __construct(ItemService $svc) {
         $this->svc = $svc;
     }
     /**
